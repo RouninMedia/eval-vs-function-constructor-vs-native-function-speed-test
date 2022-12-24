@@ -3,14 +3,6 @@
 ## HTML
 
 ```html
-<p></p>
-<div class="checkboxes">
-<label><input type="checkbox">Native</label>
-<label><input type="checkbox">eval()</label>
-<label><input type="checkbox">Function Constructor 1</label>
-<label><input type="checkbox">Function Constructor 2</label>
-</div>
-
 <table>
 <thead><th>Script Type</th><th>Time 1</th><th>Time 2</th></thead>
 <tr><td>Native Function</td><td class="script native1"></td><td class="script native2"></td></tr>
@@ -19,6 +11,8 @@
 </table>
 
 <button type="button">Run Script</button>
+
+<p></p>
 ```
 
 ## CSS
