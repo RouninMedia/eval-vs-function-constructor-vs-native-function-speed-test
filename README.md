@@ -50,34 +50,68 @@ td.inactive {
 let paragraph = document.querySelector('p');
 let button = document.querySelector('button');
 
-const runNativeScript = () => {
+const runNative1Script = () => {
 
-  let nativeScriptStart = window.performance.now();
+  let nativeScript1Start = window.performance.now();
 
   for (let i = 0; i < 10000; i++) {
-    paragraph.textContent = 'Loop iteration ' + (i + 1);
+    (i) => paragraph.textContent = 'Loop iteration ' + (i + 1);
   }
 
-  let nativeScriptEnd = window.performance.now();
+  let nativeScript1End = window.performance.now();
 
-  let nativeScriptDuration = (nativeScriptEnd - nativeScriptStart);
+  let nativeScript1Duration = (nativeScript1End - nativeScript1Start);
   
-  return nativeScriptDuration;
+  return nativeScript1Duration;
 }
 
-const runEvalScript = () => {
+const runNative2Script = () => {
 
-  let evalScriptStart = window.performance.now();
+  let nativeScript2Start = window.performance.now();
 
+  const nativeFunction = (i) => paragraph.textContent = 'Loop iteration ' + (i + 1);
+  
   for (let i = 0; i < 10000; i++) {
-    eval("paragraph.textContent = 'Loop iteration ' + (i + 1)");
+    nativeFunction(i);
   }
 
-  let evalScriptEnd = window.performance.now();
+  let nativeScript2End = window.performance.now();
 
-  let evalScriptDuration = (evalScriptEnd - evalScriptStart);
+  let nativeScript2Duration = (nativeScript2End - nativeScript2Start);
   
-  return evalScriptDuration;
+  return nativeScript2Duration;
+}
+
+const runEval1Script = () => {
+
+  let evalScript1Start = window.performance.now();
+
+  for (let i = 0; i < 10000; i++) {
+    eval("(i) => paragraph.textContent = 'Loop iteration ' + (i + 1)");
+  }
+
+  let evalScript1End = window.performance.now();
+
+  let evalScript1Duration = (evalScript1End - evalScript1Start);
+  
+  return evalScript1Duration;
+}
+
+const runEval2Script = () => {
+
+  let evalScript2Start = window.performance.now();
+  
+  const evalFunction = eval("(i) => paragraph.textContent = 'Loop iteration ' + (i + 1)");
+
+  for (let i = 0; i < 10000; i++) {
+    evalFunction(i);
+  }
+
+  let evalScript2End = window.performance.now();
+
+  let evalScript2Duration = (evalScript2End - evalScript2Start);
+  
+  return evalScript2Duration;
 }
 
 const runFunction1Script = () => {
@@ -114,13 +148,16 @@ const runFunction2Script = () => {
 
 const runTimers = () => {
 
-  let nativeScriptDuration = runNativeScript();
-  let evalScriptDuration = runEvalScript();
+  let native1ScriptDuration = runNative1Script();
+  let native2ScriptDuration = runNative2Script();
+  let eval1ScriptDuration = runEval1Script();
+  let eval2ScriptDuration = runEval2Script();
   let function1ScriptDuration = runFunction1Script();
   let function2ScriptDuration = runFunction2Script();
   
-  document.querySelector('.native1').textContent = nativeScriptDuration + 'ms';
-  document.querySelector('.eval1').textContent = evalScriptDuration + 'ms';
+  document.querySelector('.native1').textContent = native1ScriptDuration + 'ms';  document.querySelector('.native2').textContent = native1ScriptDuration + 'ms';
+  document.querySelector('.eval1').textContent = eval1ScriptDuration + 'ms';
+  document.querySelector('.eval2').textContent = eval2ScriptDuration + 'ms';
   document.querySelector('.function1').textContent = function1ScriptDuration + 'ms';
   document.querySelector('.function2').textContent = function2ScriptDuration + 'ms';
   
