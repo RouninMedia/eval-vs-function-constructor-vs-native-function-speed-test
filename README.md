@@ -5,9 +5,9 @@
 ```html
 <table>
 <thead><th>Script Type</th><th>Time 1</th><th>Time 2</th></thead>
-<tr><td>Native Function</td><td class="script native1"></td><td class="script native2"></td></tr>
-<tr><td>eval()</td><td class="script eval1"></td><td class="script eval2"></td></tr>
-<tr><td>Function Constructor 1</td><td class="script function1"></td><td class="script function2"></td></tr>
+<tr><td>Native Function</td><td class="native1 result"></td><td class="native2 result"></td></tr>
+<tr><td>eval()</td><td class="eval1 result"></td><td class="eval2 result"></td></tr>
+<tr><td>Function Constructor 1</td><td class="function1 result"></td><td class="function2 result"></td></tr>
 </table>
 
 <button type="button">Run Script</button>
@@ -34,7 +34,7 @@ td {
   border: 1px solid rgb(0, 0, 0);
 }
 
-td.script {
+td.result {
   cursor: pointer;
 }
 
@@ -133,6 +133,6 @@ const toggleActive = (e) => {
   
 button.addEventListener('click', runTimers, false);
 
-[... document.querySelectorAll('.script')].forEach((tableCell) => tableCell.addEventListener('click', toggleActive, false));
+[... document.querySelectorAll('.result')].forEach((tableCell) => tableCell.addEventListener('click', toggleActive, false));
 
 ```
