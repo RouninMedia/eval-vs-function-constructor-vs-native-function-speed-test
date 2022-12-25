@@ -148,14 +148,14 @@ const runFunction2Script = () => {
 
 const runTimers = () => {
 
-  let native1ScriptDuration = runNative1Script();
+  let native1ScriptDuration = (document.querySelector('.native1').classList.contains('inactive')) ? null : runNative1Script();
   let native2ScriptDuration = runNative2Script();
   let eval1ScriptDuration = runEval1Script();
   let eval2ScriptDuration = runEval2Script();
   let function1ScriptDuration = runFunction1Script();
   let function2ScriptDuration = runFunction2Script();
   
-  document.querySelector('.native1').textContent = native1ScriptDuration + 'ms';  document.querySelector('.native2').textContent = native1ScriptDuration + 'ms';
+  document.querySelector('.native1').textContent = native1ScriptDuration + 'ms';  document.querySelector('.native2').textContent = native2ScriptDuration + 'ms';
   document.querySelector('.eval1').textContent = eval1ScriptDuration + 'ms';
   document.querySelector('.eval2').textContent = eval2ScriptDuration + 'ms';
   document.querySelector('.function1').textContent = function1ScriptDuration + 'ms';
