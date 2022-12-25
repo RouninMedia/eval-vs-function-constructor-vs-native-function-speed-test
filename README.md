@@ -148,12 +148,19 @@ const runFunction2Script = () => {
 
 const runTimers = () => {
 
-  let native1ScriptDuration = (document.querySelector('.native1').classList.contains('inactive')) ? null : runNative1Script();
-  let native2ScriptDuration = runNative2Script();
-  let eval1ScriptDuration = runEval1Script();
-  let eval2ScriptDuration = runEval2Script();
-  let function1ScriptDuration = runFunction1Script();
-  let function2ScriptDuration = runFunction2Script();
+  let native1 = document.querySelector('.native1');
+  let native2 = document.querySelector('.native2');
+  let eval1 = document.querySelector('.eval1');
+  let eval2 = document.querySelector('.eval2');
+  let function1 = document.querySelector('.function1');
+  let function2 = document.querySelector('.function2');
+
+  let native1ScriptDuration = (native1.classList.contains('inactive')) ? null : runNative1Script();
+  let native2ScriptDuration = (native2.classList.contains('inactive')) ? null : runNative2Script();
+  let eval1ScriptDuration = (eval1.classList.contains('inactive')) ? null : runEval1Script();
+  let eval2ScriptDuration = (eval2.classList.contains('inactive')) ? null : runEval2Script();
+  let function1ScriptDuration = (function1.classList.contains('inactive')) ? null : runFunction1Script();
+  let function2ScriptDuration = (function2.classList.contains('inactive')) ? null : runFunction2Script();
   
   document.querySelector('.native1').textContent = native1ScriptDuration + 'ms';  document.querySelector('.native2').textContent = native2ScriptDuration + 'ms';
   document.querySelector('.eval1').textContent = eval1ScriptDuration + 'ms';
