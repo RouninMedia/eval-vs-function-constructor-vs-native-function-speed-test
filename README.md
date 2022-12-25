@@ -135,7 +135,7 @@ const runFunction2Script = () => {
   
   const myFunction = Function("i", "paragraph.textContent = 'Loop iteration ' + (i + 1)");
 
-  for (let i = 0; i < 12000; i++) {
+  for (let i = 0; i < 10000; i++) {
     myFunction(i);
   }
 
