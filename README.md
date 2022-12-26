@@ -4,13 +4,14 @@
 
 ```html
 <table>
-<thead><th>Script Type</th><th>Time 1 (average of 10)</th><th>Time 2 (average of 10)</th></thead>
+<thead><th>Script Type</th><th>Time 1</th><th>Time 2</th></thead>
 <tr><td>Native Function</td><td class="native1 result"></td><td class="native2 result"></td></tr>
 <tr><td>eval()</td><td class="eval1 result inactive"></td><td class="eval2 result"></td></tr>
 <tr><td>Function Constructor</td><td class="function1 result inactive"></td><td class="function2 result"></td></tr>
 </table>
 
 <button type="button">Run Script</button>
+<em>(N.B. script takes up to 15 seconds to run)</em>
 
 <p></p>
 ```
@@ -42,6 +43,11 @@ td.inactive {
   color: rgba(0, 0, 0, 0);
   background-color: rgb(127, 127, 127);
 }
+
+button {
+  display: inline-block;
+  margin-right: 6px;
+}
 ```
 
 ## JavaScript
@@ -61,12 +67,12 @@ const runNative1Script = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 10; h++) {
+  for (let h = 0; h < 100; h++) {
     
     let scriptStart = window.performance.now();
     
     for (let i = 0; i < 10000; i++) {
-      (i) => paragraph.textContent = 'Loop iteration ' + (i + 1);
+      ((i) => paragraph.textContent = 'Loop iteration ' + (i + 1))();
     }
     
     let scriptEnd = window.performance.now();
@@ -74,14 +80,14 @@ const runNative1Script = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
     
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
 }
 
 const runNative2Script = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 10; h++) {
+  for (let h = 0; h < 100; h++) {
 
     let scriptStart = window.performance.now();
 
@@ -96,7 +102,7 @@ const runNative2Script = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
     
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
 }
 
 const runEval1Script = () => {
@@ -123,7 +129,7 @@ const runEval2Script = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 10; h++) {
+  for (let h = 0; h < 100; h++) {
 
     let scriptStart = window.performance.now();
   
@@ -138,7 +144,7 @@ const runEval2Script = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
   
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
 }
 
 const runFunction1Script = () => {
@@ -165,7 +171,7 @@ const runFunction2Script = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 10; h++) {
+  for (let h = 0; h < 100; h++) {
 
     let scriptStart = window.performance.now();
   
@@ -180,7 +186,7 @@ const runFunction2Script = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
   
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
 }
 
 const runTimers = () => {
