@@ -50,7 +50,7 @@ button {
     
 <script>
 
-  let paragraph = document.querySelector('p');
+let paragraph = document.querySelector('p');
 let button = document.querySelector('button');
 
 let nativeNotStored = document.querySelector('.nativeNotStored');
@@ -64,7 +64,7 @@ const runNativeNotStoredScript = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 100; h++) {
+  for (let h = 0; h < 10; h++) {
     
     let scriptStart = window.performance.now();
     
@@ -77,14 +77,14 @@ const runNativeNotStoredScript = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
     
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
 }
 
 const runNativeStoredScript = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 100; h++) {
+  for (let h = 0; h < 10; h++) {
 
     let scriptStart = window.performance.now();
 
@@ -99,7 +99,7 @@ const runNativeStoredScript = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
     
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
 }
 
 const runEvalNotStoredScript = () => {
@@ -126,7 +126,7 @@ const runEvalStoredScript = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 100; h++) {
+  for (let h = 0; h < 10; h++) {
 
     let scriptStart = window.performance.now();
   
@@ -141,7 +141,7 @@ const runEvalStoredScript = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
   
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
 }
 
 const runFunctionNotStoredScript = () => {
@@ -168,7 +168,7 @@ const runFunctionStoredScript = () => {
 
   let scriptDurations = [];
   
-  for (let h = 0; h < 100; h++) {
+  for (let h = 0; h < 10; h++) {
 
     let scriptStart = window.performance.now();
   
@@ -183,7 +183,7 @@ const runFunctionStoredScript = () => {
     scriptDurations.push((scriptEnd - scriptStart));
   }
   
-  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 100);
+  return ((scriptDurations.reduce((a, b) => a + b, 0)) / 10);
 }
 
 const runTimers = () => {
