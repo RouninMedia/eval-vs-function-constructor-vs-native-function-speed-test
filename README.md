@@ -5,9 +5,9 @@
 ```html
 <table>
 <thead><th>Script Type</th><th>Not stored</th><th>Stored in variable</th></thead>
-<tr><td>Native Function</td><td class="native1 result"></td><td class="native2 result"></td></tr>
-<tr><td>eval()</td><td class="eval1 result inactive"></td><td class="eval2 result"></td></tr>
-<tr><td>Function Constructor</td><td class="function1 result inactive"></td><td class="function2 result"></td></tr>
+<tr><td>Native Function</td><td class="nativeNotStored result"></td><td class="nativeStored result"></td></tr>
+<tr><td>eval()</td><td class="evalNotStored result inactive"></td><td class="evalStored result"></td></tr>
+<tr><td>Function Constructor</td><td class="functionNotStored result inactive"></td><td class="functionStored result"></td></tr>
 </table>
 
 <button type="button">Run Script</button>
@@ -56,12 +56,12 @@ button {
 let paragraph = document.querySelector('p');
 let button = document.querySelector('button');
 
-let native1 = document.querySelector('.native1');
-let native2 = document.querySelector('.native2');
-let eval1 = document.querySelector('.eval1');
-let eval2 = document.querySelector('.eval2');
-let function1 = document.querySelector('.function1');
-let function2 = document.querySelector('.function2');
+let nativeNotStored = document.querySelector('.nativeNotStored');
+let nativeStored = document.querySelector('.nativeStored');
+let evalNotStored = document.querySelector('.evalNotStored');
+let evalStored = document.querySelector('.evalStored');
+let functionNotStored = document.querySelector('.functionNotStored');
+let functionStored = document.querySelector('.functionStored');
 
 const runNativeNotStoredScript = () => {
 
@@ -191,23 +191,23 @@ const runFunctionStoredScript = () => {
 
 const runTimers = () => {
 
-  let nativeNotStoredScriptDuration = (native1.classList.contains('inactive')) ? null : runNativeNotStoredScript() + 'ms';
-  document.querySelector('.native1').textContent = nativeNotStoredScriptDuration;
+  let nativeNotStoredScriptDuration = (nativeNotStored.classList.contains('inactive')) ? null : runNativeNotStoredScript() + 'ms';
+  document.querySelector('.nativeNotStored').textContent = nativeNotStoredScriptDuration;
   
-  let nativeStoredScriptDuration = (native2.classList.contains('inactive')) ? null : runNativeStoredScript() + 'ms';
-  document.querySelector('.native2').textContent = nativeStoredScriptDuration;
+  let nativeStoredScriptDuration = (nativeStored.classList.contains('inactive')) ? null : runNativeStoredScript() + 'ms';
+  document.querySelector('.nativeStored').textContent = nativeStoredScriptDuration;
     
-  let evalNotStoredScriptDuration = (eval1.classList.contains('inactive')) ? null : runEvalNotStoredScript() + 'ms';
-  document.querySelector('.eval1').textContent = evalNotStoredScriptDuration;
+  let evalNotStoredScriptDuration = (evalNotStored.classList.contains('inactive')) ? null : runEvalNotStoredScript() + 'ms';
+  document.querySelector('.evalNotStored').textContent = evalNotStoredScriptDuration;
     
-  let evalStoredScriptDuration = (eval2.classList.contains('inactive')) ? null : runEvalStoredScript() + 'ms';
-  document.querySelector('.eval2').textContent = evalStoredScriptDuration;
+  let evalStoredScriptDuration = (evalStored.classList.contains('inactive')) ? null : runEvalStoredScript() + 'ms';
+  document.querySelector('.evalStored').textContent = evalStoredScriptDuration;
     
-  let functionNotStoredScriptDuration = (function1.classList.contains('inactive')) ? null : runFunctionNotStoredScript() + 'ms';
-  document.querySelector('.function1').textContent = functionNotStoredScriptDuration;
+  let functionNotStoredScriptDuration = (functionNotStored.classList.contains('inactive')) ? null : runFunctionNotStoredScript() + 'ms';
+  document.querySelector('.functionNotStored').textContent = functionNotStoredScriptDuration;
     
-  let functionStoredScriptDuration = (function2.classList.contains('inactive')) ? null : runFunctionStoredScript() + 'ms';
-  document.querySelector('.function2').textContent = functionStoredScriptDuration;
+  let functionStoredScriptDuration = (functionStored.classList.contains('inactive')) ? null : runFunctionStoredScript() + 'ms';
+  document.querySelector('.functionStored').textContent = functionStoredScriptDuration;
   
   button.textContent = 'Re-run Script';
 }
